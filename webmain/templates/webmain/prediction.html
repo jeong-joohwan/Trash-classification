@@ -1,0 +1,665 @@
+<!doctype html>
+<html><head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>BLOCKS - Bootstrap Dashboard Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Carlos Alvarez - Alvarez.is">
+
+    <!-- Le styles -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
+    
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+  	<!-- Google Fonts call. Font Used Open Sans & Raleway -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $("#btn-blog-next").click(function () {
+      $('#blogCarousel').carousel('next')
+    });
+     $("#btn-blog-prev").click(function () {
+      $('#blogCarousel').carousel('prev')
+    });
+
+     $("#btn-client-next").click(function () {
+      $('#clientCarousel').carousel('next')
+    });
+     $("#btn-client-prev").click(function () {
+      $('#clientCarousel').carousel('prev')
+    });
+    
+});
+
+ $(window).load(function(){
+
+    $('.flexslider').flexslider({
+        animation: "slide",
+        slideshow: true,
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+    });  
+});
+
+
+
+</script>
+
+<!--ARGON CHART HEAD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- DATA TABLE CSS -->
+    <link href="{% static 'css/table.css' %}" rel="stylesheet">
+
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+  	<!-- Google Fonts call. Font Used Open Sans -->
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  	<!-- DataTables Initialization -->
+    <script type="text/javascript" src="{% static 'js/datatables/jquery.dataTables.js' %}"></script>
+  			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#dt1').dataTable();
+			} );
+	</script>
+
+	<style>
+		.display {
+			color:black;
+		}
+
+		.graph1 {
+	height:550px;
+	margin-bottom: 30px;
+    padding-bottom: 10px;
+    border: 1px solid #383737;
+    background-image: url(../img/sep-half.png);
+    background-color: #3d3d3d;
+    color: white;
+}
+
+	
+
+
+	.nav-pills {
+		font-size: .875rem;
+    font-weight: 500;
+    padding: .75rem 1rem;
+    transition: all .15s ease;
+    color: #5e72e4;
+	}
+
+	.py-2 {
+    padding-bottom: .5rem !important;
+	padding-top: .5rem !important;
+}
+
+.nav-link {
+    display: block;
+    padding: .25rem .75rem;
+}
+
+.a {
+    text-decoration: none;
+    color: #5e72e4;
+    background-color: transparent;
+}
+
+.chart-sales-dark {
+	background-color: #3d3d3d;
+}
+
+. body {
+    background: #1f1f1f;
+    font-family: 'Open Sans', sans-serif;
+}
+	</style>
+
+	<!--1.3.1 head-->
+	<link rel="apple-touch-icon" sizes="76x76" href="C:/Blocks/paper-dashboard-pro-v1.3.1/paper-dashboard-pro-v1.3.1/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="C:/Blocks/paper-dashboard-pro-v1.3.1/paper-dashboard-pro-v1.3.1/assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Paper Dashboard PRO by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+     
+    <!--  Paper Dashboard core CSS    -->
+    <link href="{% static 'css/paper-dashboard.css' %}" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static 'css/demo.css' %}" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+	<link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+  
+	<!-- 0. 네비게이션 -->
+	<div class="navbar-nav navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/index"><img src="{% static 'img/logo30.png'%}" alt=""> I.C.U.</a>
+			</div> 
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/index"><i class="icon-home icon-white"></i> 메인화면</a></li>
+					<li><a href="/control"><i class="icon-folder-open icon-white"></i> 공정제어</a></li>
+					<li><a href="/cctv"><i class="icon-folder-open icon-white"></i> cctv 제어</a></li>
+					<li><a href="/realtime"><i class="icon-calendar icon-white"></i> 실시간 데이터</a></li>
+					<li><a href="/table"><i class="icon-th icon-white"></i> 데이터 조회</a></li>
+					<li><a href="/login"><i class="icon-lock icon-white"></i> 로그인</a></li>
+					<li><a href="/user"><i class="icon-user icon-white"></i> 관리자 등록</a></li>
+					<li class="active"><a href="/prediction"><i class="icon-user icon-white"></i> 예측</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+
+    <div class="container">
+
+		 <!-- FIRST ROW OF BLOCKS -->     
+		 <div class="row">
+	
+			<!-- USER PROFILE BLOCK -->
+			  <div class="col-sm-3 col-lg-12">
+				<div class="graph1">
+					<div class="dash-unit">
+						
+						<dtitle>graph</dtitle>
+						<hr>
+						<div class="card bg-default">
+							<div class="card-header bg-transparent">
+								<div class="row align-items-center">
+									<div class="col">
+									<h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
+								<h5 class="h3 text-white mb-0">Sales value</h5>
+							  </div>
+									<div class="col">
+								  	<ul class="nav nav-pills justify-content-end">
+										<li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+									  	<a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+										<span class="d-none d-md-block">Month</span>
+										<span class="d-md-none">M</span>
+									  </a>
+									</li>
+									<li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
+									  <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+										<span class="d-none d-md-block">Week</span>
+										<span class="d-md-none">W</span>
+									  </a>
+									</li>
+								  </ul>
+								</div>
+							  </div>
+							</div>
+							<div class="card-body">
+							  <!-- Chart -->
+							  <div class="chart">
+								  <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+								<!-- Chart wrapper -->
+								<canvas id="chart-sales-dark" class="chart-canvas chartjs-render-monitor" style="display: block; height: 350px; width: 56px;" width="70" height="437"></canvas>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						</div>
+						
+
+	  <!-- SECOND ROW OF BLOCKS -->     
+      <div class="row">
+	
+      <!-- USER PROFILE BLOCK -->
+      <div class="col-sm-3 col-lg-5">
+		<div class="dash-unit">
+			<dtitle>graph</dtitle>
+				<hr>
+				<div class="section-graph">
+				  <div id="importantchart"></div>
+				  <br>
+				  <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="200px" class="ct-chart-line" style="width: 100%; height: 250px;">
+					  <g class="ct-grids">
+						  <line y1="215" y2="215" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="186.42857142857142" y2="186.42857142857142" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="157.85714285714286" y2="157.85714285714286" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="129.28571428571428" y2="129.28571428571428" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="100.71428571428571" y2="100.71428571428571" x1="50" x2="0" class="ct-grid ct-vertical"></line>
+						  <line y1="72.14285714285714" y2="72.14285714285714" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="43.571428571428584" y2="43.571428571428584" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  <line y1="15" y2="15" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+					  </g>
+					  <g><g class="ct-series ct-series-a">
+						  <path d="M50,203.571C59.372,184.524,68.744,157.313,78.117,146.429C87.489,135.544,96.861,123.571,106.233,123.571C115.606,123.571,124.978,129.286,134.35,135C143.722,140.714,153.094,169.286,162.467,169.286C171.839,169.286,181.211,140.714,190.583,135C199.956,129.286,209.328,129.667,218.7,123.571C228.072,117.476,237.444,93.095,246.817,77.857C256.189,62.619,265.561,38.238,274.933,32.143C284.306,26.048,293.678,20.714,303.05,20.714C312.422,20.714,321.794,49.286,331.167,55C340.539,60.714,349.911,62.619,359.283,66.429, 2000,2000" class="ct-line"></path>
+					  </g></g>
+
+					  <g class="ct-labels">
+						  <foreignObject style="overflow: visible;" x="50" y="220" width="28.116666158040363" height="20">
+							 <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 1000px; height: 20px;">6pm</span>
+						  </foreignObject>
+					   <foreignObject style="overflow: visible;" x="200" y="220" width="2.116666158040363" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">9pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="350" y="220" width="28.116666158040367" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">11pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="500" y="220" width="28.11666615804036" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">2am</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="650" y="220" width="28.11666615804036" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">4am</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="800" y="220" width="28.116666158040374" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">8am</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="950" y="220" width="28.116666158040346" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">2pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="1100" y="220" width="28.116666158040374" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">5pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="1250" y="220" width="28.116666158040374" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">8pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="1400" y="220" width="28.116666158040346" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">11pm</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="1550" y="220" width="28.116666158040346" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">4am</span>
+					   </foreignObject><foreignObject style="overflow: visible;" x="1700" y="220" width="30" height="20">
+						  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;"></span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="186.42857142857142" x="10" height="28.571428571428573" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">0</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="157.85714285714283" x="10" height="28.571428571428573" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">2.5</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="129.2857142857143" x="10" height="28.571428571428562" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">5</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="100.7142857142857" x="10" height="28.571428571428584" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">7.5</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="72.14285714285714" x="10" height="28.57142857142857" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">10</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="43.571428571428584" x="10" height="28.571428571428555" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">12.5</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="15" x="10" height="28.571428571428584" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">15</span>
+					   </foreignObject><foreignObject style="overflow: visible;" y="-15" x="10" height="30" width="30">
+						  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">17.5</span>
+					   </foreignObject></g></svg>
+					  
+				  <div class="graph-info">
+				   
+				  </div>
+				</div>
+			</div>
+		</div>
+
+
+      <!-- DATA TABLE BLOCK -->
+        <div class="col-sm-3 col-lg-7">
+      		<div class="dash-unit">
+				  <dtitle>Data table</dtitle>
+				  <hr>
+				  <table class="display">
+					<thead>
+					  <tr>
+						<th>Band or Group</th>
+						<th>Name</th>
+						<th>Instrument</th>
+						<th>Influence</th>
+						<th>Awesome</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr class="odd">
+						<td>Queen</td>
+						<td>Brian May</td>
+						<td>Guitar</td>
+						<td class="center"> 7</td>
+						<td class="center">9</td>
+					  </tr>
+					  <tr class="even">
+						<td>Queen</td>
+						<td>Roger Taylor</td>
+						<td>Drums</td>
+						<td class="center">5</td>
+						<td class="center">7</td>
+					  </tr>
+					  <tr class="odd">
+						<td>Beatles</td>
+						<td>Paul McCartney</td>
+						<td>Guitar &amp; Piano</td>
+						<td class="center">8</td>
+						<td class="center">9</td>
+					  </tr>
+					  <tr class="even">
+						<td>Adele</td>
+						<td>Adele</td>
+						<td>None</td>
+						<td class="center">8</td>
+						<td class="center">8</td>
+					  </tr>
+					  <tr class="odd">
+						<td>Britney Spears</td>
+						<td>Britney Spears</td>
+						<td>None</td>
+						<td class="center">7</td>
+						<td class="center">-5</td>
+					  </tr>
+					  <tr class="odd">
+						<td>Britney Spears</td>
+						<td>Britney Spears</td>
+						<td>None</td>
+						<td class="center">7</td>
+						<td class="center">-5</td>
+					  </tr>
+					  <tr class="odd">
+						<td>Britney Spears</td>
+						<td>Britney Spears</td>
+						<td>None</td>
+						<td class="center">7</td>
+						<td class="center">-5</td>
+					  </tr>
+					  <tr class="odd">
+						<td>Britney Spears</td>
+						<td>Britney Spears</td>
+						<td>None</td>
+						<td class="center">7</td>
+						<td class="center">-5</td>
+					  </tr>
+					</tbody>
+				   </table><!--/END First Table -->
+				   <br>
+				   </div>
+			</div>
+		</div>
+
+	
+
+
+	<!-- THIRD ROW OF BLOCKS -->     
+	<div class="row">
+	
+		<!-- USER PROFILE BLOCK -->
+		<div class="col-sm-3 col-lg-5">
+			<div class="dash-unit">
+				<dtitle>graph</dtitle>
+					<hr>
+					<div class="section-graph">
+					  <div id="importantchart"></div>
+					  <br>
+					  <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="200px" class="ct-chart-line" style="width: 100%; height: 250px;">
+						  <g class="ct-grids">
+							  <line y1="215" y2="215" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="186.42857142857142" y2="186.42857142857142" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="157.85714285714286" y2="157.85714285714286" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="129.28571428571428" y2="129.28571428571428" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="100.71428571428571" y2="100.71428571428571" x1="50" x2="0" class="ct-grid ct-vertical"></line>
+							  <line y1="72.14285714285714" y2="72.14285714285714" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="43.571428571428584" y2="43.571428571428584" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+							  <line y1="15" y2="15" x1="50" x2="20" class="ct-grid ct-vertical"></line>
+						  </g>
+						  <g><g class="ct-series ct-series-a">
+							  <path d="M50,203.571C59.372,184.524,68.744,157.313,78.117,146.429C87.489,135.544,96.861,123.571,106.233,123.571C115.606,123.571,124.978,129.286,134.35,135C143.722,140.714,153.094,169.286,162.467,169.286C171.839,169.286,181.211,140.714,190.583,135C199.956,129.286,209.328,129.667,218.7,123.571C228.072,117.476,237.444,93.095,246.817,77.857C256.189,62.619,265.561,38.238,274.933,32.143C284.306,26.048,293.678,20.714,303.05,20.714C312.422,20.714,321.794,49.286,331.167,55C340.539,60.714,349.911,62.619,359.283,66.429, 2000,2000" class="ct-line"></path>
+						  </g></g>
+  
+						  <g class="ct-labels">
+							  <foreignObject style="overflow: visible;" x="50" y="220" width="28.116666158040363" height="20">
+								 <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 1000px; height: 20px;">6pm</span>
+							  </foreignObject>
+						   <foreignObject style="overflow: visible;" x="200" y="220" width="2.116666158040363" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">9pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="350" y="220" width="28.116666158040367" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">11pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="500" y="220" width="28.11666615804036" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">2am</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="650" y="220" width="28.11666615804036" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">4am</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="800" y="220" width="28.116666158040374" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">8am</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="950" y="220" width="28.116666158040346" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">2pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="1100" y="220" width="28.116666158040374" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">5pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="1250" y="220" width="28.116666158040374" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">8pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="1400" y="220" width="28.116666158040346" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">11pm</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="1550" y="220" width="28.116666158040346" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 28px; height: 20px;">4am</span>
+						   </foreignObject><foreignObject style="overflow: visible;" x="1700" y="220" width="30" height="20">
+							  <span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;"></span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="186.42857142857142" x="10" height="28.571428571428573" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">0</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="157.85714285714283" x="10" height="28.571428571428573" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">2.5</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="129.2857142857143" x="10" height="28.571428571428562" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">5</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="100.7142857142857" x="10" height="28.571428571428584" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">7.5</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="72.14285714285714" x="10" height="28.57142857142857" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">10</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="43.571428571428584" x="10" height="28.571428571428555" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">12.5</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="15" x="10" height="28.571428571428584" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">15</span>
+						   </foreignObject><foreignObject style="overflow: visible;" y="-15" x="10" height="30" width="30">
+							  <span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">17.5</span>
+						   </foreignObject></g></svg>
+						  
+					  <div class="graph-info">
+					   
+					  </div>
+					</div>
+				</div>
+			</div>
+  
+  
+		<!-- DATA TABLE BLOCK -->
+		  <div class="col-sm-3 col-lg-7">
+				<div class="dash-unit">
+					<dtitle>Data table</dtitle>
+					<hr>
+					<table class="display">
+					  <thead>
+						<tr>
+						  <th>Band or Group</th>
+						  <th>Name</th>
+						  <th>Instrument</th>
+						  <th>Influence</th>
+						  <th>Awesome</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr class="odd">
+						  <td>Queen</td>
+						  <td>Brian May</td>
+						  <td>Guitar</td>
+						  <td class="center"> 7</td>
+						  <td class="center">9</td>
+						</tr>
+						<tr class="even">
+						  <td>Queen</td>
+						  <td>Roger Taylor</td>
+						  <td>Drums</td>
+						  <td class="center">5</td>
+						  <td class="center">7</td>
+						</tr>
+						<tr class="odd">
+						  <td>Beatles</td>
+						  <td>Paul McCartney</td>
+						  <td>Guitar &amp; Piano</td>
+						  <td class="center">8</td>
+						  <td class="center">9</td>
+						</tr>
+						<tr class="even">
+						  <td>Adele</td>
+						  <td>Adele</td>
+						  <td>None</td>
+						  <td class="center">8</td>
+						  <td class="center">8</td>
+						</tr>
+						<tr class="odd">
+						  <td>Britney Spears</td>
+						  <td>Britney Spears</td>
+						  <td>None</td>
+						  <td class="center">7</td>
+						  <td class="center">-5</td>
+						</tr>
+						<tr class="odd">
+						  <td>Britney Spears</td>
+						  <td>Britney Spears</td>
+						  <td>None</td>
+						  <td class="center">7</td>
+						  <td class="center">-5</td>
+						</tr>
+						<tr class="odd">
+						  <td>Britney Spears</td>
+						  <td>Britney Spears</td>
+						  <td>None</td>
+						  <td class="center">7</td>
+						  <td class="center">-5</td>
+						</tr>
+						<tr class="odd">
+						  <td>Britney Spears</td>
+						  <td>Britney Spears</td>
+						  <td>None</td>
+						  <td class="center">7</td>
+						  <td class="center">-5</td>
+						</tr>
+					  </tbody>
+					 </table><!--/END First Table -->
+					 <br>
+					 </div>
+			  </div>
+		  </div>
+		  </div>
+	  </div> <!-- /container -->
+	</div> <!-- /container -->
+  
+
+
+	<!-- 푸터 -->
+	<div id="footerwrap">
+		<footer class="clearfix"></footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+				<p><img src="{% static 'img/logo.png'%}" alt=""></p>
+				<p>I.C.U.</p>
+				</div>
+
+			</div><!-- /row -->
+		</div><!-- /container -->		
+  	</div><!-- /footerwrap -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/lineandbars.js' %}"></script>
+    
+	<script type="text/javascript" src="{% static 'js/dash-charts.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/gauge.js' %}"></script>
+	
+	<!-- NOTY JAVASCRIPT -->
+	<script type="text/javascript" src="{% static 'js/noty/jquery.noty.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/noty/layouts/top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/noty/layouts/topLeft.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/noty/layouts/topRight.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/noty/layouts/topCenter.js' %}"></script>
+	
+	<!-- You can add more layouts if you want -->
+	<script type="text/javascript" src="{% static 'js/noty/themes/default.js' %}"></script>
+    <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+
+	<script type="text/javascript" src="{% static 'js/admin.js' %}"></script>
+	
+	<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/admin.js' %}"></script>
+	
+
+
+	
+	<!-- Argon Scripts -->
+  <!-- Core -->
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/js.cookie.js' %}"></script>
+  <script src="{% static 'js/jquery.scrollbar.min.js' %}"></script>
+  <script src="{% static 'js/jquery-scrollLock.min.js' %}"></script>
+  <!-- Optional JS -->
+  <script src="{% static 'js/Chart.min.js' %}"></script>
+  <script src="{% static 'js/Chart.extension.js' %}"></script>
+  <!-- Argon JS -->
+  <script src="{% static 'js/argon.js' %}"></script>
+  <!-- Demo JS - remove this in your project -->
+  <script src="{% static 'js/demo.min.js' %}"></script>
+	
+
+
+  
+  
+</body></html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+
+<head>
+  {% load static %}
+  <html lang="ko">
+  <meta charset="utf-8">
+  <title>관리자 등록 화면</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Le styles -->
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <link href="{% static 'css/table.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      margin: 0 auto;
+      background-color:black;
+    }
+
+    .register-wraper {
+      margin: auto;
+    }
+
+    input[type=user],
+    textarea {
+      background: white;
+      font-size: 13px;
+      display: block;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      height: 40px;
+      line-height: 18px;
+      padding: 0;
+      text-indent: 18px;
+      margin: 0 0 18px;
+    }
+  </style>
+
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+  <!-- Google Fonts call. Font Used Open Sans & Raleway -->
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript">
+    function table() {
+      f.action = "/user/"; //결제확인 페이지로 이동
+      f.submit();
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'GmarketSansMedium';
+    }
+
+    input[type=text],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: #337ab7;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #337ab7;
+    }
+
+    #register-form {
+      margin: 0 auto;
+      width: 400px;
+    }
+
+    #register-form .control-inline {
+      display: inline-block;
+    }
+
+    #register-form legend {
+      font-family: 'GmarketSansMedium';
+      font-size: 36px;
+      font-weight: 300;
+      color: #333333;
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    #register-form label {
+      font-family: 'GmarketSansMedium';
+      font-size: 18px;
+      color: #333333;
+      font-weight: 200;
+    }
+
+    #register-wraper {
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      -o-border-radius: 15px;
+      border-radius: 15px;
+      -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      margin-top: 25px;
+      margin-bottom: 70px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      background: lightgray;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 0. 네비게이션 -->
+<div class="navbar-nav navbar-inverse navbar-fixed-top">
+  <div class="containers">
+    <div class="col-sm-8">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">
+          <img src="{% static 'img/cloudlogo.png' %}" width="40" height="40" style="float:left">
+          I.C.U.</a>
+      </div>
+    </div>
+    <div class="col-sm=4">
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/index"><i class="icon-calendar icon-white"></i> 로그아웃</a></li>
+          <li><a href="/control"><i class="icon-th icon-white"></i> 공정제어 </a></li>
+          <li><a href="/table"><i class="icon-calendar icon-white"></i> 데이터 조회</a></li>
+          <li class="active"><a href="/user"><i class="icon-user icon-white"></i> 사용자 등록</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--네비게이션 끝-->
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-3 col-lg-3">
+      </div>
+      <!-- 1. 관리자 등록 화면 -->
+      <div class="col-lg-6">
+        <div id="register-wraper">
+          <form id="register-form" class="form" name="f" action="/user" method="post">
+            {% csrf_token %}
+            <legend>사용자 등록</legend>
+            <br>
+
+
+            <label for="type">User type</label>
+            <select id="type" name="usertype">
+              <option value="type" style="color:dimgray;">사용자 유형을 선택하세요</option>
+              <option value="admin">관리자</option>
+              <option value="CEO">경영자</option>
+              <option value="driver">운전자</option>
+            </select>
+
+            <label for="username">Name</label>
+            <input type="user" id="name" name="name" placeholder="사용자 이름을 입력하세요 " requested>
+
+            <label for="email">E-mail</label>
+            <input type="user" id="email" name="email" placeholder="사용자 이메일을 입력하세요 " requested>
+            
+            <label for="email">ID</label>
+            <input type="user" id="id" name="userid" placeholder="사용자 아이디를 입력하세요 " requested>
+
+            <label for="name">Password</label>
+            <input type="user" id="password" name="password" placeholder="사용자 비밀번호를 입력하세요 " requested>
+
+            <label for="location">Location</label>
+            <select id="location" name="location">
+              <option value="location">사용자 담당지역을 선택하세요</option>
+              <option value="강남구">강남구</option>
+              <option value="강동구">강동구</option>
+              <option value="강북구">강북구</option>
+              <option value="강서구">강서구</option>
+              <option value="관악구">관악구</option>
+              <option value="광진구">광진구</option>
+              <option value="구로구">구로구</option>
+              <option value="금천구">금천구</option>
+              <option value="노원구">노원구</option>
+              <option value="도봉구">도봉구</option>
+              <option value="동대문구">동대문구</option>
+              <option value="동작구">동작구</option>
+              <option value="마포구">마포구</option>
+              <option value="서대문구">서대문구</option>
+              <option value="서초구">서초구</option>
+              <option value="성동구">성동구</option>
+              <option value="성북구">성북구</option>
+              <option value="송파구">송파구</option>
+              <option value="양천구">양천구</option>
+              <option value="영등포구">영등포구</option>
+              <option value="용산구">용산구</option>
+              <option value="은평구">은평구</option>
+              <option value="종로구">종로구</option>
+              <option value="중구">중구</option>
+              <option value="중랑구">중랑구</option>
+              <option value="none">해당 없음</option>
+            </select>
+
+            <label for="car-number">Car number</label>
+            <input type="user" id="car-number" name="carnumber" placeholder="차량 번호를 입력하세요 (예: 12가3456) ">
+
+            <label for="car-weight">Car weight</label>
+            <input type="user" id="car-weight" name="carweight" placeholder="차량 중량을 입력하세요 (예: 7t) ">
+            <br>
+
+            <button type="button" class="btn btn-primary" onClick="table()" style="margin-bottom: 0px;">등록하기</button>
+          </form>
+         
+
+
+      <div class="col-sm-3 col-lg-3">
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+    <!--푸터-->
+  <!-- 푸터 -->
+  <div id="footerwrap">
+    <footer class="clearfix"></footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+          <p><img src="{% static 'img/cloudlogo.png' %}" width="120" height="120" alt=""></p>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /footerwrap -->
+
+
+  <!-- Le javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+</body>
+
+</html>

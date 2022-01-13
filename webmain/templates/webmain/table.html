@@ -1,0 +1,755 @@
+<!doctype html>
+<html>
+
+<head>
+
+  {% load static %}
+  <meta charset="utf-8">
+  <html lang="ko">
+  <title>데이터 조회</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!--datepicker, dropdown link-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+  <!-- Le styles -->
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/pi/main.css' %}" rel="stylesheet" />
+
+  <!-- 파이차트/지역별 집계 Resources   -->
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <!-- <script src="{% static 'js/pie/piechart.js' %}"></script> -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+
+
+  <!-- DATA TABLE CSS -->
+  <link href="{% static 'css/table.css' %}" rel="stylesheet">
+
+
+
+  <!-- DataTables Initialization -->
+  <script type="text/javascript" src="{% static 'js/datatables/jquery.dataTables.js' %}"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+      $('#dt1').dataTable();
+    });
+
+  </script>
+
+<script type="text/javascript">
+
+  $(".selector").flatpickr({ 
+  
+  dateFormat: "Y-m-d",
+  
+  minDate:"today",
+  
+  defaultDate: '<?php if(isset($_GET['stx'])) { echo $_GET['stx']; } else { echo "+0D"; } ?>'
+  
+  });
+  
+  </script>
+
+
+  <script type="text/javascript">
+    function table() {
+      f.action = "/table/"; //결제확인 페이지로 이동
+      f.submit();
+    }
+  </script>
+
+
+  <!--graph -->
+
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+    }
+
+    #region-rank {
+      width: 100%;
+      height: 500px;
+      position: inherit;
+    }
+  </style>
+
+  <!-- table.html 조회테이블 양식 -->
+  <style>
+    .display {
+      color: black;
+    }
+
+    .input {
+      padding: 10px;
+      font-family: 'GmarketSansMedium';
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      border-radius: 0 !important;
+    }
+
+    .form {
+      border-radius: 0 !important;
+      font-size: 12x;
+    }
+
+    .td {
+      color: black;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    .form-group {
+      width: fit-content;
+    }
+    .containers {
+      padding-right: 60px;
+      padding-left: 60px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .inner-form {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 16px;
+      display: flex;
+      margin-top: 10px;
+      width: 100%;
+      align-items: center;
+      flex-wrap: wrap;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: space-between;
+    }
+
+    .containers {
+      padding-right: 60px;
+      padding-left: 60px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .label {
+      color: white;
+    }
+
+    .s002 {
+      min-height: fit-content;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-family: 'GmarketSansMedium';
+      background-color: #3d3d3d;
+      background-size: cover;
+      background-position: center center;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 50px;
+    }
+
+    .s003 {
+      min-height: fit-content;
+      min-width: width 1190px;
+      background-color: #3d3d3d;
+      color: white;
+      background-size: cover;
+      background-position: center center;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 50px;
+    }
+
+
+    .s002 form {
+      width: 100%;
+      max-width: 1190px;
+    }
+
+    .s002 form .inner-form {
+      background: #3d3d3d;
+      padding: 16px;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .s002 form .inner-form .input-field {
+      width: 100%;
+      white-space: nowrap;
+      border-radius: .5px;
+      font-size: 18px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      color: #fff;
+      transition: all .2s ease-out, color .2s ease-out;
+      border: 0;
+      cursor: pointer;
+      font-weight: 400;
+      font-family: 'GmarketSansMedium';
+      
+    }
+
+   
+
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search {
+      width: 100%;
+      background: #337ab7;
+      white-space: nowrap;
+      border-radius: .5px;
+      font-size: 18px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      color: #fff;
+      transition: all .2s ease-out, color .2s ease-out;
+      border: 0;
+      cursor: pointer;
+      font-weight: 400;
+      font-family: 'GmarketSansMedium';
+    }
+
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search:hover {
+      background: #2d8117;
+    }
+  </style>
+
+
+  <!-- realtime. 지역별집계 code  -->
+
+  <script>
+    am4core.ready(function () {
+
+      // amchart 에서 제공하는 테마를 적용합니다.
+      am4core.useTheme(am4themes_dark);
+      am4core.useTheme(am4themes_animated);
+
+      // https://cdn.amcharts.com/lib/4/charts.js 에서 제공하는
+      // XWChart 를 사용해서 막대차트를 생성합니다.
+      var chart = am4core.create("region-rank", am4charts.XYChart);
+
+      var region_list = new Array();
+      var volume_list = Array.apply(null, new Array(25)).map(Number.prototype.valueOf, 0);
+      region_list = ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문', '동작구', '마포구', '서대문', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포', '용산구', '은평구', '종로구', '중구', '중랑구'];
+      
+      for (var i = 0; i < obj.books.length; i++) {
+        if (obj.books[i].trash_region == '강남구') {
+          volume_list[0] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '강동구') {
+          volume_list[1] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '강북구') {
+          volume_list[2] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '강서구') {
+          volume_list[3] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '관악구') {
+          volume_list[4] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '광진구') {
+          volume_list[5] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '구로구') {
+          volume_list[6] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '금천구') {
+          volume_list[7] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '노원구') {
+          volume_list[8] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '도봉구') {
+          volume_list[9] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '동대문구') {
+          volume_list[10] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '동작구') {
+          volume_list[11] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '마포구') {
+          volume_list[12] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '서대문구') {
+          volume_list[13] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '서초구') {
+          volume_list[14] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '성동구') {
+          volume_list[15] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '성북구') {
+          volume_list[16] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '송파구') {
+          volume_list[17] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '양천구') {
+          volume_list[18] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '영등포구') {
+          volume_list[19] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '용산구') {
+          volume_list[20] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '은평구') {
+          volume_list[21] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '종로구') {
+          volume_list[22] = obj.books[i].trash_weight;
+        } else if (obj.books[i].trash_region == '중구') {
+          volume_list[23] = obj.books[i].trash_weight;
+        } else {
+          volume_list[24] = obj.books[i].trash_weight;
+        }
+      }
+
+     
+      chart.data = [{
+
+        "region": region_list[0],
+        "volume": volume_list[0]
+
+      },
+      {
+
+        "region": region_list[1],
+        "volume": volume_list[1]
+
+      },
+      {
+
+        "region": region_list[2],
+        "volume": volume_list[2]
+
+      },
+      {
+
+        "region": region_list[3],
+        "volume": volume_list[3]
+
+      },
+      {
+
+        "region": region_list[4],
+        "volume": volume_list[4]
+
+      }, {
+
+        "region": region_list[5],
+        "volume": volume_list[5]
+
+      }, {
+
+        "region": region_list[6],
+        "volume": volume_list[6]
+
+      }, {
+
+        "region": region_list[7],
+        "volume": volume_list[7]
+
+      }, {
+
+        "region": region_list[8],
+        "volume": volume_list[8]
+
+      }, {
+
+        "region": region_list[9],
+        "volume": volume_list[9]
+
+      }, {
+
+        "region": region_list[10],
+        "volume": volume_list[10]
+
+      }, {
+
+        "region": region_list[11],
+        "volume": volume_list[11]
+
+      }, {
+
+        "region": region_list[12],
+        "volume": volume_list[12]
+
+      }, {
+
+        "region": region_list[13],
+        "volume": volume_list[13]
+
+      }, {
+
+        "region": region_list[14],
+        "volume": volume_list[14]
+
+      }, {
+
+        "region": region_list[15],
+        "volume": volume_list[15]
+
+      }, {
+
+        "region": region_list[16],
+        "volume": volume_list[16]
+
+      }, {
+
+        "region": region_list[17],
+        "volume": volume_list[17]
+
+      }, {
+
+        "region": region_list[18],
+        "volume": volume_list[18]
+
+      }, {
+
+        "region": region_list[19],
+        "volume": volume_list[19]
+
+      }, {
+
+        "region": region_list[20],
+        "volume": volume_list[20]
+
+      }, {
+
+        "region": region_list[21],
+        "volume": volume_list[21]
+
+      }, {
+
+        "region": region_list[22],
+        "volume": volume_list[22]
+
+      }, {
+
+        "region": region_list[23],
+        "volume": volume_list[23]
+
+      }, {
+
+        "region": region_list[24],
+        "volume": volume_list[24]
+
+      }];
+
+
+      chart.padding(40, 10, 40, 10);
+
+
+      // 기본 카테고리의 구조를 설정하는 변수입니다.
+      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+
+      // ?
+      categoryAxis.renderer.grid.template.location = 0;
+      // 가로 카테고리를 지역(**구)로 지정합니다.
+      categoryAxis.dataFields.category = "region";
+      // 가로 카테고리(**구) 간격입니다.
+      categoryAxis.renderer.minGridDistance = 10;
+      // 막대를 순서대로 정렬합니다.
+      categoryAxis.renderer.inversed = true;
+      // 그리드 격자무늬를 숨깁니다.
+      categoryAxis.renderer.grid.template.disabled = true;
+
+
+      // Y축의 최소/최대 값을 변경하는 변수입니다.
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.min = 0;
+      valueAxis.extraMax = 0.1;
+      // 막대그래프의 구역을 잡아줍니다. (container)
+      var topContainer = chart.chartContainer.createChild(am4core.Container);
+      topContainer.layout = "absolute";
+      topContainer.toBack();
+      topContainer.paddingBottom = 15;
+      topContainer.width = am4core.percent(100);
+      // 컨테이너 왼쪽에 단위 값을 설정해줍니다 (톤)
+      var axisTitle = topContainer.createChild(am4core.Label);
+      axisTitle.text = "( ton )";
+      axisTitle.fontWeight = 600;
+      axisTitle.align = "left";
+      axisTitle.paddingLeft = 0;
+
+      // https://cdn.amcharts.com/lib/4/charts.js 에서 제공하는
+      // ColumnSeries 를 사용해서 새로운 변수를 만듭니다.
+      var series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.categoryX = "region";
+      series.dataFields.valueY = "volume";
+      series.tooltipText = "{valueY.value}"
+
+      // 막대의 모양(테두리,코너각) 설정입니다.
+      series.columns.template.strokeOpacity = 0;
+      series.columns.template.column.cornerRadiusTopRight = 10;
+      series.columns.template.column.cornerRadiusTopLeft = 10;
+
+
+      var labelBullet = series.bullets.push(new am4charts.LabelBullet());
+      labelBullet.label.verticalCenter = "bottom";
+      labelBullet.label.dy = -10;  // 막대 위 값의 거리입니다.
+      labelBullet.label.text = "{values.valueY.workingValue.formatNumber('#.#')}";   // valueY값을소수점 위 자리 모두 표시합니다.
+
+      chart.zoomOutButton.disabled = false;
+
+      // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+      series.columns.template.adapter.add("fill", function (fill, target) {
+        return chart.colors.getIndex(target.dataItem.index);
+      });
+
+      categoryAxis.sortBySeries = series;
+
+    });// end am4core.ready()
+  </script>
+
+  <script type="text/javascript">
+
+
+    var libcharts = ('{{result|safe}}');
+    console.log(libcharts);
+
+    var obj = JSON.parse(libcharts);
+
+
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+  <!-- 0. 네비게이션 -->
+  <div class="navbar-nav navbar-inverse navbar-fixed-top">
+    <div class="containers">
+      <div class="col-sm-8">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">
+            <img src="{% static 'img/cloudlogo.png' %}" width="40" height="40" style="float:left">
+            I.C.U.</a>
+        </div>
+      </div>
+      <div class="col-sm=4">
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/index"><i class="icon-calendar icon-white"></i> 로그아웃</a></li>
+            <li><a href="/control"><i class="icon-th icon-white"></i> 공정제어 </a></li>
+            <li class="active"><a href="/table"><i class="icon-calendar icon-white"></i> 데이터 조회</a></li>
+            <li><a href="/user"><i class="icon-user icon-white"></i> 관리자 등록</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--네비게이션 끝-->
+
+  <div class="container">
+
+    <!-- 1. 조회form  -->
+    <div class="row">
+
+      <div class="dash-unit" style="padding-left:10px; padding-right:10px; min-height:fit-content;">
+        <dtitle>데이터 조회</dtitle>
+        <hr>
+
+        <!--조회폼시작-->
+        <div class="s002">
+          <form name="f" method="post" action="http://127.0.0.1:8000/table">
+            {% csrf_token %}
+            <label style="font-size:20px; color:white;"> 품목 일자별 데이터 조회 </label>
+           
+            <div class="inner-form">
+              <!--폐기물종류 선택-->
+              <div class="input-field fouth-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                    </path>
+                  </svg>
+                </div>
+                <select data-trigger="" name="choices-trash">
+                  <option placeholder="">품목조회</option>
+                  <option>금속(캔)</option>
+                  <option>유리(녹색)</option>
+                  <option>유리(투명)</option>
+                  <option>유리(갈색)</option>
+                  <option>플라스틱(불투명)</option>
+                  <option>플라스틱(투명)</option>
+                  
+                </select>
+              </div>
+              <!--datepicker 시작 -->
+              <div class="input-field second-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
+                    </path>
+                  </svg>
+                </div>
+                <input class="datepicker" id="depart" class="selector" name="choices-date" type="text" placeholder="30 Aug 2020" />
+              </div>
+              <div class="input-field third-wrap">
+                <div class="icon-wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
+                    </path>
+                  </svg>
+                </div>
+                <input class="datepicker" id="return" name="choices-date2" type="text" placeholder="21 Nov 2020" />
+              </div>
+              <!--datepicker 끝 -->
+              <!-- 조회버튼 -->
+              <div class="input-field fifth-wrap">
+                <button class="btn-search" type="button" onClick="table()" style="line-height:.2.1; align-items:center;">조회하기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div><!-- 조회 폼 끝 -->
+
+
+    <!-- 조회폼 js  -->
+    <script src="{% static 'js/choices.js'%}"></script>
+    <script src="{% static 'js/flatpickr.js'%}"></script>
+    <script>
+      flatpickr(".datepicker",
+        {});
+    </script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+        {
+          searchEnabled: true,
+          itemSelectText: ' ',
+          shouldSortItems: false,
+        });
+    </script>
+
+    <!-- 2. 막대그래프 + 데이터테이블 구역 -->
+    <div class="row">
+      <div class="pie-chart" style="min-height:max-content;">
+        
+        
+        <dtitle style="font-size:18px;">{{answer.종류}}의 {{answer.시작일}}부터 {{answer.종료일}}까지의 지역별 누적데이터</dtitle>
+        
+        <div class="inner-box" style="padding-top:30px;padding-right:10px;padding-left:10px;">
+          <!-- 2-1. 막대그래프 -->
+          <div id="region-rank" id="region-rank"></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--데이터테이블-->
+        
+
+      </div>
+    </div>
+
+
+
+
+
+  </div> <!-- /container -->
+
+
+
+
+  </div> <!-- /container -->
+  <!-- 푸터 -->
+  <div id="footerwrap">
+    <footer class="clearfix"></footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+          <p><img src="{% static 'img/cloudlogo.png' %}" width="120" height="120" alt=""></p>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </div><!-- /footerwrap -->
+
+
+
+
+
+</body>
+
+<!-- Le javascript
+   ================================================== -->
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<!-- <script type="text/javascript" src="assets/js/lineandbars.js"></script> -->
+
+<script type="text/javascript" src="{% static 'js/dash-charts.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/gauge.js' %}"></script>
+
+<!-- You can add more layouts if you want -->
+<script type="text/javascript" src="{% static 'js/noty/themes/default.js' %}"></script>
+<!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript" src="{% static 'js/admin.js' %}"></script>
+
+<!--네비게이션-->
+<!--   Core JS Files   -->
+<script src="{% static 'js/core/jquery.min.js' %}"></script>
+<script src="{% static 'js/core/popper.min.js' %}"></script>
+<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+<script src="{% static 'js/plugins/moment.min.js' %}"></script>
+
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="{% static 'js/plugins/bootstrap-switch.js' %}"></script>
+<!--  Plugin for Sweet Alert -->
+<script src="{% static 'js/plugins/sweetalert2.min.js' %}"></script>
+<!-- Forms Validations Plugin -->
+<script src="{% static 'js/plugins/jquery.validate.min.js' %}"></script>
+<!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="{% static 'js/plugins/query.bootstrap-wizard.js' %}"></script>
+<!--   Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="{% static 'js/plugins/bootstrap-selectpicker.js' %}"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+<script src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+<!--   Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src=" {% static 'js/plugins/bootstrap-tagsinput.js' %}"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="{% static 'js/plugins/jasny-bootstrap.min.js' %}"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="{% static 'js/plugins/fullcalendar.min.js' %}"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="{% static 'js/plugins/jquery-jvectormap.js' %}"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="{% static 'js/plugins/nouislider.min.js' %}"></script>
+<!-- Chart JS -->
+<script src="{% static 'js/plugins/chartjs.min.js' %}"></script>
+<!--  Notifications Plugin    -->
+<script src="{% static 'js/plugins/bootstrap-notify.js' %}"></script>
+
+<script>
+  $(document).ready(function () {
+    demo.checkFullPageBackgroundImage();
+  });
+</script>
+
+</body>
+
